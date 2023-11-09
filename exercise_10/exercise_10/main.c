@@ -6,9 +6,23 @@
 //
 
 #include <stdio.h>
-#include <string.h>
 
 int main(void) {
-    char str[30] = "happy C programming";
-    printf("문자열 \"%s\"의 길이 : %lu", str, strlen(str));
+    FILE *file = fopen("sample.txt", "w");
+
+    if (file == NULL) {
+        printf("파일을 열 수 없습니다.\n");
+        return 1;
+    }
+
+    for (int i = 0; i < 3; i++) {
+        char word[50];
+        printf("input a word: ");
+        scanf("%s", word);
+        fprintf(file, "%s\n", word);
+    }
+
+    fclose(file);
+
+    return 0;
 }
